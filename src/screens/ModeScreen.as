@@ -10,6 +10,7 @@ package screens
 	
 	public class ModeScreen extends Screen 
 	{
+		private var gameScreen:GameScreen;
 		private var title:TextField;
 		private var choose:TextField;
 		private var DW:TextField;
@@ -77,11 +78,25 @@ package screens
 		private function onKeyUp(e:KeyboardEvent):void 
 		{
 			trace(e.keyCode);
+			if (e.keyCode == 49) {
+			
+				//choose.removeEventListener(Event.ENTER_FRAME, loop);		
+				stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+				dispatchEvent(new Event(START_GAME));
+				
+			}
 			if (e.keyCode == 50) {
 			
 				//choose.removeEventListener(Event.ENTER_FRAME, loop);		
 				stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyUp);
 				dispatchEvent(new Event(START_GAME));
+				//dispatchEvent(new Event(DW_MODE));
+				
+				
+				//trace(gameScreen);
+				//gameScreen.bal = 2;
+				//gameScreen.paddle = 1;
+				//gameScreen.punt = 20;
 				
 			}
 		}

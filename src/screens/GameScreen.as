@@ -18,10 +18,15 @@ package screens
 	 */
 	public class GameScreen extends Screen
 	{
+		public var bal:Number = 2;
+		public var paddle:Number = 2;
+		public var punt:Number = 2;
 		private var balls:Array = [];
 		private var paddles:Array = [];
 		private var scoreboard:Scoreboard;
+		
 		static public const GAME_OVER:String = "game over";
+		static public const WIN_SCREEN:String = "win";
 		static public const BALL_BOUNCE:String = "ballBounce";
 		
 		public function GameScreen() 
@@ -31,7 +36,7 @@ package screens
 		private function init(e:Event):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-				for (var i:int = 0; i < 1; i ++) 
+				for (var i:int = 0; i < bal; i ++) 
 			{
 				balls.push(new Ball());
 				addChild(balls[i]);
@@ -45,7 +50,7 @@ package screens
 			paddles.push(new Player());
 			paddles[0].balls = balls;
 			
-			for (i = 0; i <2 ; i++) 
+			for (i = 0; i <paddle ; i++) 
 			{
 				
 				addChild(paddles[i]);
@@ -103,11 +108,14 @@ package screens
 		
 		private function checkScore():void 
 		{
-			if (scoreboard.player1 >= 10000 || scoreboard.player2 >= 10000)
+			if (scoreboard.player2 >= punt)
 			{
 				destroy();
 				dispatchEvent(new Event(GAME_OVER));
-				
+			}
+			else if (scoreboard.player1 >= punt) {
+				destroy();
+				dispatchEvent(new Event(WIN_SCREEN));
 			}
 			
 		}
