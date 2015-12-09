@@ -9,8 +9,9 @@ package actors
 	import utils.MovementCalculator;
 	/**
 	 * ...
-	 * @author erwin henraat
+	 * @author Joey vd Wijk
 	 */
+	
 	public class Ball extends MovieClip 
 	{
 		private var _movement:Point;

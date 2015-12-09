@@ -9,8 +9,9 @@ package sounds
 	import screens.*;
 	/**
 	 * ...
-	 * @author erwin henraat
+	 * @author Joey vd Wijk
 	 */
+	
 	public class SoundPlayer 
 	{
 		private var _sounds:Array = [];

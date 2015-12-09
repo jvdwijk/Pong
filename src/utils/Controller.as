@@ -6,7 +6,7 @@ package utils
 	import flash.events.KeyboardEvent;
 	/**
 	 * ...
-	 * @author erwin henraat
+	 * @author Joey vd Wijk
 	 * 
 	 * use constructor to set controls
 	 * use properties up, down and fire to check buttonstates

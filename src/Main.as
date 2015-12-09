@@ -11,8 +11,9 @@ package
 	
 	/**
 	 * ...
-	 * @author Erwin Henraat
+	 * @author Joey vd Wijk
 	 */
+	
 	public class Main extends Sprite 
 	{
 		private var gameScreen:GameScreen;
@@ -36,7 +37,7 @@ package
 		}
 		private function buildIntroSreen():void
 		{		
-			trace("53262");
+			
 			introScreen = new IntroScreen();
 			addChild(introScreen);
 			introScreen.addEventListener(IntroScreen.CHOOSE_GAME, chooseGame);
@@ -44,7 +45,6 @@ package
 		
 		private function chooseGame(e:Event):void
 		{
-			trace("124");
 			removeChild(introScreen);
 			chooseScreen = new ModeScreen();
 			addChild(chooseScreen);

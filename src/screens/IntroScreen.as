@@ -8,6 +8,11 @@ package screens
 	import flash.events.KeyboardEvent;
 	import flash.ui.Keyboard;
 	
+	/**
+	 * ...
+	 * @author Joey vd Wijk
+	 */
+	
 	public class IntroScreen extends Screen 
 	{
 		private var title:TextField;

@@ -14,10 +14,13 @@ package screens
 	
 	/**
 	 * ...
-	 * @author erwin henraat
+	 * @author Joey vd Wijk
 	 */
+	
 	public class GameScreen extends Screen
 	{
+		
+		public var coop:Paddle = new AI();
 		public var bal:Number = 2;
 		public var paddle:Number = 2;
 		public var punt:Number = 2;
@@ -26,8 +29,10 @@ package screens
 		private var scoreboard:Scoreboard;
 		
 		static public const GAME_OVER:String = "game over";
+		static public const DESTROY:String = "Destroy";
 		static public const WIN_SCREEN:String = "win";
 		static public const BALL_BOUNCE:String = "ballBounce";
+		static public var mode:int = 0;
 		
 		public function GameScreen() 
 		{
@@ -35,6 +40,7 @@ package screens
 		}				
 		private function init(e:Event):void 
 		{
+			modeCheck();
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 				for (var i:int = 0; i < bal; i ++) 
 			{
@@ -46,7 +52,7 @@ package screens
 				balls[i].addEventListener(Ball.OUTSIDE_LEFT, onLeftOut);
 				
 			}	
-			paddles.push(new AI());
+			paddles.push(coop);
 			paddles.push(new Player());
 			paddles[0].balls = balls;
 			
@@ -69,7 +75,29 @@ package screens
 		private function loop(e:Event):void 
 		{
 			checkCollision();
-		}	
+			
+			
+		}
+		
+		private function modeCheck():void
+		{
+			if (mode == 1) {
+				bal = 2;
+				paddle = 2;
+				punt = 10;
+			}
+			if (mode == 2) {
+				bal = 2;
+				paddle = 2;
+				punt = 5;
+			}
+			if (mode == 3) {
+				bal = 1000;
+				paddle = 2;
+				punt = 5000;
+			}
+		}
+		
 		private function checkCollision():void 
 		{
 			for (var i:int = 0; i < balls.length; i++) 
@@ -87,6 +115,15 @@ package screens
 			}
 			
 		}
+		////DW_MODE
+		//public function deathWish(e:Event):void
+		//{
+			//trace("DW");
+			//bal = 20;
+			//paddle = 1;
+			//punt = 20;
+		//}
+		
 		private function onLeftOut(e:Event):void 
 		{
 			var b:Ball = e.target as Ball;
@@ -111,10 +148,12 @@ package screens
 			if (scoreboard.player2 >= punt)
 			{
 				destroy();
+				dispatchEvent(new Event(DESTROY));
 				dispatchEvent(new Event(GAME_OVER));
 			}
 			else if (scoreboard.player1 >= punt) {
 				destroy();
+				dispatchEvent(new Event(DESTROY));
 				dispatchEvent(new Event(WIN_SCREEN));
 			}
 			
@@ -128,6 +167,7 @@ package screens
 				removeChild(balls[i]);
 			}
 			balls.splice(0, balls.length);
+			paddles[1].Destroy();
 		}
 	}
 

@@ -4,14 +4,15 @@ package actors
 	
 	/**
 	 * ...
-	 * @author erwin henraat
+	 * @author Joey vd Wijk
 	 */
+	
 	public class Paddle extends MovieClip 
 	{
 		
 		public function Paddle() 
 		{
-			addChild(new PaddleArt());
+			addChild(new Ipaddle());
 		}
 		
 	}

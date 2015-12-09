@@ -7,6 +7,12 @@ package screens
 	import utils.Controller;
 	import flash.events.KeyboardEvent;
 	import flash.ui.Keyboard;
+	import flash.events.MouseEvent;
+	
+	/**
+	 * ...
+	 * @author Joey vd Wijk
+	 */
 	
 	public class ModeScreen extends Screen 
 	{
@@ -14,9 +20,12 @@ package screens
 		private var title:TextField;
 		private var choose:TextField;
 		private var DW:TextField;
+		private var ultra:TextField;
 		
 		public static const CHOOSE_GAME:String = "Choose Mode";	
 		public static const START_GAME:String = "start game";
+		public static const DW_MODE:String = "Death Wish Mode";
+		public static const ULTRA_MODE:String = "Ultra Mode";
 				
 		
 		public function ModeScreen():void {
@@ -27,8 +36,6 @@ package screens
 		
 		private function init(e:Event):void 
 		{
-			
-			trace("wertyuiop");
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			
@@ -50,57 +57,68 @@ package screens
 			
 			choose = new TextField();
 			choose.embedFonts = true;
-			choose.text = "Normal Mode = 1";
+			choose.text = "Normal Mode";
 			choose.autoSize = TextFieldAutoSize.CENTER;
-			choose.setTextFormat(subFormat)
+			choose.setTextFormat(subFormat);
+			choose.addEventListener(MouseEvent.CLICK, Choose);
 			
 			DW = new TextField();
 			DW.embedFonts = true;
-			DW.text = "Death Wish mode = 2";
+			DW.text = "Death Wish mode";
 			DW.autoSize = TextFieldAutoSize.CENTER;
 			DW.setTextFormat(subFormat)
+			DW.addEventListener(MouseEvent.CLICK, DeathWish);
+
+			
+			ultra = new TextField();
+			ultra.embedFonts = true;
+			ultra.text = "ultra mode";
+			ultra.autoSize = TextFieldAutoSize.CENTER;
+			ultra.setTextFormat(subFormat)
+			ultra.addEventListener(MouseEvent.CLICK, ultraMode);
 			
 			choose.x = stage.stageWidth / 2 - choose.textWidth / 2;
 			choose.y = stage.stageHeight / 2 + 20;
 			
 			DW.x = stage.stageWidth / 2 - choose.textWidth / 2;
-			DW.y = stage.stageHeight / 2 + 40;
+			DW.y = stage.stageHeight / 2 + 45;
 			
-			choose.mouseEnabled = false;
-			DW.mouseEnabled = false;
+			ultra.x = stage.stageWidth / 2 - choose.textWidth / 2;
+			ultra.y = stage.stageHeight / 2 + 70;
+			
+			//choose.mouseEnabled = false;
+			//DW.mouseEnabled = false;
+			//ultra.mouseEnabled = false;
 			
 			addChild(choose);
 			addChild(DW);
+			addChild(ultra);
 			
-			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
 		}
 		
-		private function onKeyUp(e:KeyboardEvent):void 
+		private function Choose(e:MouseEvent):void 
 		{
-			trace(e.keyCode);
-			if (e.keyCode == 49) {
-			
 				//choose.removeEventListener(Event.ENTER_FRAME, loop);		
-				stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+				stage.removeEventListener(MouseEvent.CLICK, Choose);
+				GameScreen.mode = 1;
 				dispatchEvent(new Event(START_GAME));
 				
-			}
-			if (e.keyCode == 50) {
-			
+		}
+		private function DeathWish(e:MouseEvent):void
+		{
 				//choose.removeEventListener(Event.ENTER_FRAME, loop);		
-				stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+				stage.removeEventListener(MouseEvent.CLICK, DeathWish);
+				GameScreen.mode = 2;
 				dispatchEvent(new Event(START_GAME));
-				//dispatchEvent(new Event(DW_MODE));
-				
-				
-				//trace(gameScreen);
-				//gameScreen.bal = 2;
-				//gameScreen.paddle = 1;
-				//gameScreen.punt = 20;
-				
-			}
+		}
+		
+		private function ultraMode(e:MouseEvent):void
+		{
+			stage.removeEventListener(MouseEvent.CLICK, ultraMode);
+			GameScreen.mode = 3;
+			dispatchEvent(new Event(START_GAME));
+		}
 		}
 		
 	}
 
-}

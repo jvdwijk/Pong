@@ -4,7 +4,7 @@ package screens
 	import flash.text.TextFormat;
 	/**
 	 * ...
-	 * @author erwin henraat
+	 * @author Joey vd Wijk
 	 */
 	public class Screen extends MovieClip
 	{
@@ -16,6 +16,7 @@ package screens
 		advancedAntiAliasing="true", 
 		embedAsCFF = "false")]		
 		private var JediFont:Class;
+
 		
 		protected var textFormat:TextFormat;
 		protected var subFormat:TextFormat;

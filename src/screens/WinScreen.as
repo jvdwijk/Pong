@@ -9,7 +9,7 @@ package screens
 	import flash.events.TimerEvent;
 	/**
 	 * ...
-	 * @author erwin henraat
+	 * @author Joey vd Wijk
 	 */
 	public class WinScreen extends Screen 
 	{
