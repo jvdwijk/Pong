@@ -44,7 +44,7 @@ package actors
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			addChild(new BallArt());
 			if(GameScreen.mode == 4){
-			this.alpha = 0;
+			this.alpha = 0.13;
 			}
 			else {
 			this.alpha = 1;	

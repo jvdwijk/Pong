@@ -21,6 +21,7 @@ package screens
 		public var bal:Number = 2;
 		public var paddle:Number = 2;
 		public var punt:Number = 2;
+		public var punt2:Number = 2;
 		private var balls:Array = [];
 		private var paddles:Array = [];
 		private var scoreboard:Scoreboard;
@@ -83,22 +84,36 @@ package screens
 				bal = 2;
 				paddle = 2;
 				punt = 20;
+				punt2 = 20;
+				coop = new AI();
 			}
 			if (mode == 2) {
 				bal = 2;
 				paddle = 2;
 				punt = 5;
-				
+				punt2 = 6;
+				coop = new AI();
 			}
 			if (mode == 3) {
 				bal = 1000;
 				paddle = 2;
 				punt = 5000;
+				punt2 = 5000;
+				coop = new AI();
 			}
 			if (mode == 4) {
 				bal = 1;
 				paddle = 2;
 				punt = 10;
+				punt2 = 10;
+				coop = new AI();
+				trace(GameScreen);
+			}
+			if (mode == 5) {
+				bal = 1;
+				paddle = 2;
+				coop = new AI();
+				punt2 = 3;
 			}
 		}
 		
@@ -150,7 +165,7 @@ package screens
 		private function checkScore():void 
 		{
 			
-			if (scoreboard.player2 >= punt)
+			if (scoreboard.player2 >= punt2)
 			{
 				destroy();
 				dispatchEvent(new Event(DESTROY));
