@@ -17,6 +17,7 @@ package screens
 	{
 		private var title:TextField;
 		private var start:TextField;
+		private var dir:Boolean = true;
 		
 		public static const START_GAME:String = "start game";	
 		public static const CHOOSE_GAME:String = "choose game";	
@@ -79,7 +80,7 @@ package screens
 				
 			}
 		}
-		private var dir:Boolean = true;
+		
 		private function loop(e:Event):void 
 		{
 			if (dir)

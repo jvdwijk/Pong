@@ -1,9 +1,5 @@
 package screens 
 {
-	import actors.AI;
-	import actors.Ball;
-	import actors.Paddle;
-	import actors.Player;
 	import flash.display.Bitmap;
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
@@ -11,6 +7,7 @@ package screens
 	import flash.geom.Point;
 	import utils.MovementCalculator;
 	import screens.Scoreboard;
+	import actors.*;
 	
 	/**
 	 * ...
@@ -27,12 +24,13 @@ package screens
 		private var balls:Array = [];
 		private var paddles:Array = [];
 		private var scoreboard:Scoreboard;
+		static public var mode:int = 0;
 		
 		static public const GAME_OVER:String = "game over";
 		static public const DESTROY:String = "Destroy";
 		static public const WIN_SCREEN:String = "win";
 		static public const BALL_BOUNCE:String = "ballBounce";
-		static public var mode:int = 0;
+		
 		
 		public function GameScreen() 
 		{
@@ -84,17 +82,23 @@ package screens
 			if (mode == 1) {
 				bal = 2;
 				paddle = 2;
-				punt = 10;
+				punt = 20;
 			}
 			if (mode == 2) {
 				bal = 2;
 				paddle = 2;
 				punt = 5;
+				
 			}
 			if (mode == 3) {
 				bal = 1000;
 				paddle = 2;
 				punt = 5000;
+			}
+			if (mode == 4) {
+				bal = 1;
+				paddle = 2;
+				punt = 10;
 			}
 		}
 		
@@ -145,6 +149,7 @@ package screens
 		
 		private function checkScore():void 
 		{
+			
 			if (scoreboard.player2 >= punt)
 			{
 				destroy();

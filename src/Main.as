@@ -2,11 +2,7 @@ package
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import screens.GameOverScreen;
-	import screens.GameScreen;
-	import screens.IntroScreen;
-	import screens.ModeScreen;
-	import screens.WinScreen;
+	import screens.*;
 	import sounds.SoundPlayer;
 	
 	/**

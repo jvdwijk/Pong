@@ -7,6 +7,7 @@ package actors
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
 	import utils.MovementCalculator;
+	import screens.GameScreen;
 	/**
 	 * ...
 	 * @author Joey vd Wijk
@@ -17,6 +18,7 @@ package actors
 		private var _movement:Point;
 		public static const OUTSIDE_RIGHT:String = "outside right";
 		public static const OUTSIDE_LEFT:String = "outside left";
+		
 		public function set movement(m:Point):void
 		{
 			_movement = m;
@@ -41,6 +43,12 @@ package actors
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			addChild(new BallArt());
+			if(GameScreen.mode == 4){
+			this.alpha = 0;
+			}
+			else {
+			this.alpha = 1;	
+			}
 			movement = new Point(0, 0);
 			this.addEventListener(Event.ENTER_FRAME, loop);
 		}

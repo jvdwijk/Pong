@@ -21,6 +21,7 @@ package screens
 		private var choose:TextField;
 		private var DW:TextField;
 		private var ultra:TextField;
+		private var blank:TextField;
 		
 		public static const CHOOSE_GAME:String = "Choose Mode";	
 		public static const START_GAME:String = "start game";
@@ -77,6 +78,13 @@ package screens
 			ultra.setTextFormat(subFormat)
 			ultra.addEventListener(MouseEvent.CLICK, ultraMode);
 			
+			blank = new TextField();
+			blank.embedFonts = true;
+			blank.text = "blank";
+			blank.autoSize = TextFieldAutoSize.CENTER;
+			blank.setTextFormat(subFormat)
+			blank.addEventListener(MouseEvent.CLICK, Blank);
+			
 			choose.x = stage.stageWidth / 2 - choose.textWidth / 2;
 			choose.y = stage.stageHeight / 2 + 20;
 			
@@ -86,6 +94,9 @@ package screens
 			ultra.x = stage.stageWidth / 2 - choose.textWidth / 2;
 			ultra.y = stage.stageHeight / 2 + 70;
 			
+			blank.x = stage.stageWidth / 2 - choose.textWidth / 2;
+			blank.y = stage.stageHeight / 2 + 95;
+			
 			//choose.mouseEnabled = false;
 			//DW.mouseEnabled = false;
 			//ultra.mouseEnabled = false;
@@ -93,6 +104,7 @@ package screens
 			addChild(choose);
 			addChild(DW);
 			addChild(ultra);
+			addChild(blank);
 			
 		}
 		
@@ -118,7 +130,14 @@ package screens
 			GameScreen.mode = 3;
 			dispatchEvent(new Event(START_GAME));
 		}
-		}
 		
+		private function Blank(e:MouseEvent):void
+		{
+			stage.removeEventListener(MouseEvent.CLICK, Blank);
+			GameScreen.mode = 4;
+			dispatchEvent(new Event(START_GAME));
+		}
 	}
+		
+}
 

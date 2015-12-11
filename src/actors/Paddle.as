@@ -1,6 +1,7 @@
 package actors 
 {
 	import flash.display.MovieClip;
+	import screens.GameScreen;
 	
 	/**
 	 * ...
@@ -12,7 +13,13 @@ package actors
 		
 		public function Paddle() 
 		{
-			addChild(new Ipaddle());
+			addChild(new PaddleArt());
+			if(GameScreen.mode == 2){
+			this.alpha = 0;
+			}
+			else {
+			this.alpha = 1;	
+			}
 		}
 		
 	}

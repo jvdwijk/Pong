@@ -16,6 +16,7 @@ package screens
 		private var title:TextField;
 		private var timer:Timer;
 		public static const RESET:String = "reset";
+		
 		public function GameOverScreen() 
 		{
 			this.addEventListener(Event.ADDED_TO_STAGE, init);

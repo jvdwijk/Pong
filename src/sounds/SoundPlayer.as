@@ -17,6 +17,7 @@ package sounds
 		private var _sounds:Array = [];
 		private var _channel:SoundChannel;
 		private var _main:Main;
+		
 		public function SoundPlayer(main:Main):void
 		{
 			_main = main;			

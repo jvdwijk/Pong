@@ -1,6 +1,8 @@
 package actors 
 {
 	import flash.events.Event;
+	import screens.GameScreen;
+	import screens.Scoreboard;
 	
 	/**
 	 * ...
@@ -12,6 +14,8 @@ package actors
 		private var _speed:Number = 0;
 		private var _maxSpeed:Number = 12;
 		private var _balls:Array;
+		private var scoreboard:Scoreboard;
+		private var gamescreen:GameScreen;
 		
 		public function set balls(b:Array):void
 		{
@@ -43,6 +47,7 @@ package actors
 		private function loop(e:Event):void 
 		{
 			getTarget();
+		
 									
 			if(_target != null){
 				if (_target.y < this.y - 20)_speed = -_maxSpeed;
